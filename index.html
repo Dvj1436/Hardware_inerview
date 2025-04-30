@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hardware Interview Questions</title>
+  <style>
+   body{
+ font-family: Arial, sans-serif;
+      background: #00ffdd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 20px;
+
+    }
+    .container {
+      font-size: 28px;
+  color: #00ffcc;
+  background-color: #000000;
+  border: 2px solid #00ffcc;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+  transition: all 0.3s ease-in-out;
+
+    }
+    #question {
+      font-size: 28px;
+      margin-bottom: 40px;
+      min-height: 100px;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 30px;
+      cursor: pointer;
+      background-color: green;
+      color: Black;
+      border: none;
+      border-radius: 5px;
+      margin: 10px;
+      box-shadow: 0 0 30px #00ffee, 0 0 60px #00ffee, 0 0 90px #00ffee;
+      transform: scale(1.05);
+    }
+    button:hover {
+      background-color: #00ada3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="question">Loading...</div>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+    <button id="startBtn" onclick="startAgain()" style="display: none;">Start Again</button>
+  </div>
+
+  <script>
+    const allQuestions = [
+      "What is the primary function of a Central Processing Unit (CPU)?",
+      "Describe the role of the CPU in executing instructions.",
+      "What are the key components of a CPU?",
+      "Explain the difference between a single-core and multi-core processor.",
+      "How does the CPU handle multitasking?",
+      "Describe the importance of CPU clock speed.",
+      "What is the role of the Arithmetic Logic Unit (ALU) in the CPU?",
+      "Explain the concept of hyper-threading in CPUs.",
+      "How does the CPU interact with other hardware components?",
+      "Describe the impact of CPU architecture on system performance.",
+      "What is the difference between RAM (Random Access Memory) and ROM (Read-Only Memory)?",
+      "Describe the role of RAM in a computer system.",
+      "Explain the concept of virtual memory.",
+      "What are the different types of storage devices (HDD, SSD, Flash Drive)?",
+      "Describe the advantages and disadvantages of using a Hard Disk Drive (HDD).",
+      "Explain the benefits of using a Solid-State Drive (SSD).",
+      "What is the purpose of a cache memory?",
+      "Describe the difference between volatile and non-volatile memory.",
+      "How does the amount of RAM affect system performance?",
+      "Explain the concept of memory hierarchy.",
+      "Describe the role of a memory controller.",
+      "What are the different types of RAM (DRAM, SRAM)?",
+      "Explain the importance of storage capacity planning.",
+      "Describe the impact of storage device speed on system performance.",
+      "What are the benefits of using a hybrid storage solution?",
+      "What is the primary function of a motherboard?",
+      "Describe the components typically found on a motherboard.",
+      "Explain the role of the chipset in a motherboard.",
+      "What are the different types of motherboard form factors (ATX, Micro-ATX, Mini-ITX)?",
+      "Describe the importance of motherboard compatibility with CPU and RAM.",
+      "Explain the concept of motherboard layers (single-layer, multi-layer).",
+      "What are the benefits of using a high-quality motherboard?",
+      "Describe the role of capacitors on a motherboard.",
+      "Explain the importance of motherboard BIOS/UEFI.",
+      "What are the common motherboard interfaces (USB, SATA, PCIe)?",
+      "What is the primary function of a Power Supply Unit (PSU)?",
+      "Describe the importance of PSU wattage and efficiency.",
+      "Explain the difference between a linear and switching power supply.",
+      "What are the benefits of using a high-efficiency PSU?",
+      "Describe the role of a power supply unit in a computer system.",
+      "Explain the concept of power supply connectors (ATX, SATA, Molex).",
+      "What are the different types of cooling systems (air, liquid, heat sink)?",
+      "Describe the importance of proper cooling in a computer system.",
+      "Explain the benefits of using a liquid cooling system.",
+      "What are the common cooling system components (fans, heat sinks, radiators)?",
+      "What are the different types of input devices (keyboard, mouse, scanner)?",
+      "Describe the role of input devices in a computer system.",
+      "Explain the concept of output devices (monitor, speaker, printer).",
+      "What are the benefits of using a high-resolution display?",
+      "Describe the importance of ergonomic design in input devices.",
+      "Explain the difference between a wired and wireless keyboard.",
+      "What are the common types of display connectors (VGA, HDMI, DisplayPort)?",
+      "Describe the role of graphics cards in a computer system.",
+      "Explain the benefits of using a dedicated graphics card.",
+      "What are the different types of printers (inkjet, laser, 3D)?",
+      "Describe the importance of printer resolution and speed.",
+      "Explain the concept of all-in-one printers.",
+      "What are the benefits of using a multifunction printer?",
+      "Describe the role of scanners in a computer system.",
+      "Explain the importance of choosing the right peripherals for a computer system."
+    ];
+
+    let selectedQuestions = [];
+    let currentIndex = 0;
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function loadFiveQuestions() {
+      selectedQuestions = shuffle(allQuestions).slice(0, 5);
+      currentIndex = 0;
+      showQuestion();
+      document.getElementById('nextBtn').style.display = 'inline-block';
+      document.getElementById('startBtn').style.display = 'none';
+    }
+
+    function showQuestion() {
+      document.getElementById('question').textContent = selectedQuestions[currentIndex];
+    }
+
+    function nextQuestion() {
+      currentIndex++;
+      if (currentIndex < selectedQuestions.length) {
+        showQuestion();
+      } else {
+        document.getElementById('nextBtn').style.display = 'none';
+        document.getElementById('question').textContent = "End of 5 questions.";
+        document.getElementById('startBtn').style.display = 'inline-block';
+      }
+    }
+
+    function startAgain() {
+      loadFiveQuestions();
+    }
+
+    // Initialize
+    loadFiveQuestions();
+  </script>
+</body>
+</html>
